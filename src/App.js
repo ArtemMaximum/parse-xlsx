@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
-function App() {
+import { FilesDropzone } from "./ui/atoms";
+import { BaseTemplate } from "./ui/templates";
+
+// import { UIType } from "./modules/factory";
+
+// const UIRadionGroup = new UIType("radio");
+// const UICheckboxGroup = new UIType("checkbox");
+// const MyRadio = UIRadionGroup.create();
+// const MyCheckbox = UICheckboxGroup.create();
+
+function App({ hello }) {
   return (
     <div className="App">
       <header className="App-header">
+        {console.table(hello)}
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {/*<MyRadio />
+        <MyCheckbox />*/}
       </header>
+      <BaseTemplate>
+        <FilesDropzone
+          multiple
+          onDrop={files => {
+            console.log("files :", files);
+          }}
+        />
+      </BaseTemplate>
     </div>
   );
 }

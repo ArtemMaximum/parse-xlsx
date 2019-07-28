@@ -3,9 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "mobx": "^5.13.0",
+    "mobx-react": "^6.1.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-dropzone": "^10.1.6",
+    "react-scripts": "3.0.1",
+    "styled-components": "^4.3.2",
+    "styled-flexbox-grid": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -27,5 +32,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "create-react-class": "^15.6.3"
   }
 }
