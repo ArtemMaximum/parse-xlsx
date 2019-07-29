@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDropzone } from "react-dropzone";
 import styled from "styled-components";
-import { Row, Column } from "styled-flexbox-grid";
 
 const getColor = props => {
   if (props.isDragAccept) {
-    return "#61dafb";
+    return "#000";
   }
   if (props.isDragReject) {
-    return "#ff1744";
+    return "#61dafb";
   }
   if (props.isDragActive) {
     return "#61dafb";
   }
-  return "#eeeeee";
+  return "#61dafb";
 };
 
 const Container = styled.div`
@@ -23,13 +22,14 @@ const Container = styled.div`
   align-items: center;
   padding: 20px;
   border-width: 2px;
-  border-radius: 2px;
+  border-radius: 8px;
   border-color: ${props => getColor(props)};
   border-style: dashed;
   background-color: #fafafa;
   color: #bdbdbd;
   outline: none;
   transition: border 0.24s ease-in-out;
+  margin-top: 25px;
 `;
 
 export const FilesDropzone = ({ files, onDrop, multiple = false }) => {
@@ -42,15 +42,11 @@ export const FilesDropzone = ({ files, onDrop, multiple = false }) => {
   } = useDropzone({
     onDrop: acceptedFiles => {
       onDrop(acceptedFiles);
-      // setFiles(
-      //   acceptedFiles.map(file =>
-      //     Object.assign(file, {
-      //       preview: URL.createObjectURL(file)
-      //     })
-      //   )
-      // );
     }
   });
+
+  // console.log("files AAAA :", files);
+
   return (
     <section>
       <Container
@@ -62,23 +58,18 @@ export const FilesDropzone = ({ files, onDrop, multiple = false }) => {
           на неё
         </p>
       </Container>
-      <aside>
-        <h4>Files</h4>
-        <ul>{files}</ul>
-      </aside>
-      {/*<Dropzone onDrop={onDrop}>
-          {({ getRootProps, getInputProps }) => (
-            <DropzoneContainer>
-              <div {...getRootProps({ className: "dropzone" })}>
-                <input {...getInputProps()} />
-                <p>
-                  Перетащите {multiple ? "файлы" : "файл"} в эту область, либо
-                  нажмите на неё
-                </p>
-              </div>
-            </DropzoneContainer>
-          )}
-        </Dropzone>*/}
+      {files && (
+        <aside>
+          <h4>Files</h4>
+          <ul>
+            {files.map((file, index) => (
+              <li key={`${index.toString()}`}>
+                <pre>{JSON.stringify(file, null, 2)}</pre>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      )}
     </section>
   );
 };

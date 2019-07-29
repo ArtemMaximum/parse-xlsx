@@ -11,9 +11,9 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 /* Stores */
-import { unloadingStore } from "./modules/unloadings/UnloadingsStore";
+import { unloadingsStore } from "./modules/unloadings/UnloadingsStore";
 
-const stores = { unloadingStore };
+const stores = { unloadingsStore };
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>

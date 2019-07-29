@@ -1,5 +1,4 @@
 import styledFlexboxGrid from "styled-flexbox-grid";
-import React from "react";
 
 // Create a grid instance called `mainGrid`
 const mainGrid = styledFlexboxGrid({
